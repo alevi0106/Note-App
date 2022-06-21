@@ -1,1 +1,26 @@
-<p>note-list works!</p>
+<div class="main-container">
+  <div class="search-bar">
+    <div class="field">
+      <p class="control has-icons-left">
+        <input class="input" type="text" placeholder="Filter" />
+        <span class="icon is-small is-left">
+          <i class="fas fa-search"></i>
+        </span>
+      </p>
+    </div>
+  </div>
+  <button class="button floating-add-button is-primary" routerLink="new">
+    +
+  </button>
+
+  <div class="note-list" [@listAnim]>
+    <app-note-card
+      *ngFor="let note of noteList; index as i"
+      [link]="i.toString()"
+      [@itemAnim]
+      (delete)="deleteNote(i)"
+      [title]="note.title"
+      [body]="note.body"
+    ></app-note-card>
+  </div>
+</div>
